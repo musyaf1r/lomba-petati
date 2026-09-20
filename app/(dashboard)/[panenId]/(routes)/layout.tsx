@@ -16,9 +16,10 @@ export default async function DashboardLayout({
     if(!userId){
         redirect('/sign-in');
     }
+    const {panenId} = await params;
     const panen = await db.panen.findFirst({
         where:{
-            id:params.panenId,
+            id:panenId,
             userId: userId
     }
     })

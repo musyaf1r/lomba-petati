@@ -23,7 +23,7 @@ const formSchema =z.object({
 
 export const PanenModal = () => {
     const [loading,setloading]= useState(false)
-    const PanenModal = usePanenModal();
+    const panenModal = usePanenModal();
     const form = useForm<z.infer<typeof formSchema>>({
     resolver:zodResolver(formSchema),
     defaultValues:{
@@ -33,7 +33,7 @@ export const PanenModal = () => {
 const onSumbit = async (value:z.infer<typeof formSchema>)=>{
     try {
         setloading(true)
-        const response = await axios.post("/api/Panens", value);
+        const response = await axios.post("/api/panens", value);
         console.log(response.data);
         toast.success("berhasil membuat toko");
         window.location.assign(`/${response.data.id}`)
@@ -48,8 +48,8 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
         <Modal
         title="tambahkan Panen"
         description="tambah kan hasil panen dari ladang anda"
-        isOpen={PanenModal.isOpen}
-        onClose={PanenModal.onClose}
+        isOpen={panenModal.isOpen}
+        onClose={panenModal.onClose}
         >
          <div>
             <div className='space-y-4 py-4 pb-4'>
@@ -72,7 +72,7 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
                      )}
                     />
                     <div className="pt-6 space-x-2 flex justify-end items-center w-full">
-                        <Button variant="outline" onClick={PanenModal.onClose}> cancel</Button>
+                        <Button variant="outline" onClick={panenModal.onClose}> cancel</Button>
                         <Button disabled={loading} type="submit"> continue</Button>
                     </div>
                 </form>

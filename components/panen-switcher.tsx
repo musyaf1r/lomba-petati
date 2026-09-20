@@ -7,7 +7,7 @@
     import { useRouter } from 'next/navigation'
     import { Popover } from './ui/popover'
     import { Button } from './ui/button'
-    import { Check, ChevronsUpDown, PlusCircle, } from 'lucide-react'
+    import { Check, ChevronsUpDown, PlusCircle, Store as StoreIcon } from 'lucide-react'
     import { cn } from '@/lib/utils'
     import { PopoverContent } from './ui/popover'
     import { Command, CommandList,CommandInput,CommandEmpty,CommandGroup,CommandItem, CommandSeparator  } from './ui/command'
@@ -32,23 +32,24 @@
             value: item.id,
             href: `/${item.id}`
         }))
-    const currentPanen = formattedItems.find((item)=> item.value === params.PanenId);
+    const currentPanen = formattedItems.find((item)=> item.value === params.panenId);
     const [open,setOpen] = useState(false);
-    const onPanenSelect = (Panen:{value:string, label:string,})=>{
+    const onPanenSelect = (item:{value:string, label:string,})=>{
         setOpen(false);
-        router.push(`/${Panen.value}`)
+        router.push(`/${item.value}`)
         router.refresh();
     }
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger >
-                <Button variant="outline" size="sm" role="combobox" aria-expanded={open} aria-label="pilih toko " className={cn("w-50 justify-between", className)}>
-                   
+            <StoreIcon className="mx-2 h-4 w-4"/>
+            <PopoverTrigger 
+            render={  <Button variant="outline" size="sm" role="combobox" aria-expanded={open} aria-label="pilih toko " className={cn("w-50 justify-between", className)}>
                     {currentPanen?.label}
                     <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50"/>
-                </Button>
-            </PopoverTrigger>
+                </Button>}/>
+                
+            
             <PopoverContent className="w-50 p-0">
                 <Command>
                     <CommandList>
@@ -57,11 +58,11 @@
                         toko tidak ditemukan
                         </CommandEmpty>
                         <CommandGroup heading="Toko">
-                            {formattedItems.map((Panen)=>(
-                                <CommandItem key={Panen.value} onSelect={()=>onPanenSelect(Panen)} className="text-sm">
+                            {formattedItems.map((item)=>(
+                                <CommandItem key={item.value} onSelect={()=>onPanenSelect(item)} className="text-sm">
                                     
-                                    {Panen.label}
-                                    <Check className={cn("ms-auto h-4 w-4", currentPanen?.value === Panen.value?"opacity-100":"opacity-0")}/>
+                                    {item.label}
+                                    <Check className={cn("ms-auto h-4 w-4", currentPanen?.value === item.value?"opacity-100":"opacity-0")}/>
                                 </CommandItem>
                             ))}
                         </CommandGroup>
