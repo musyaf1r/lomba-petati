@@ -25,9 +25,10 @@ const navbar =async () => {
         <div className="flex h-16 items-center px-4">
             <PanenSwitcher items={panen}/>
             <MainNav className="mx-6"/>
+            <p>tes</p>
             <div className='ml-auto flex items-center space-x-4'>
                 <UserButton afterSwitchSessionUrl=''/>
-            </div>
+            </div>          
         </div>
         </div>
   )

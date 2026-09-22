@@ -1,4 +1,5 @@
     'use client'
+    import {getRole} from"@/lib/get-role"
     import { PopoverTrigger } from './ui/popover'
     import { Panen } from '@/lib/generated/prisma/client'
     import React, { useState } from 'react'
@@ -30,13 +31,13 @@
         const formattedItems = items.map((item)=>({
             label: item.name,
             value: item.id,
-            href: `/${item.id}`
+            href: `/panen/${item.id}`
         }))
     const currentPanen = formattedItems.find((item)=> item.value === params.panenId);
     const [open,setOpen] = useState(false);
     const onPanenSelect = (item:{value:string, label:string,})=>{
         setOpen(false);
-        router.push(`/${item.value}`)
+        router.push(`/panen/${item.value}`)
         router.refresh();
     }
 
@@ -57,7 +58,7 @@
                         <CommandEmpty>
                         toko tidak ditemukan
                         </CommandEmpty>
-                        <CommandGroup heading="Toko">
+                        <CommandGroup heading="Hasil panen">
                             {formattedItems.map((item)=>(
                                 <CommandItem key={item.value} onSelect={()=>onPanenSelect(item)} className="text-sm">
                                     
@@ -74,7 +75,7 @@
                                 setOpen(false);
                                 PanenModal.onOpen();
                             }}>
-                                <PlusCircle className="mr2 h-5 w-5"/> Buat Toko
+                                <PlusCircle className="mr2 h-5 w-5"/> Tambahkan Panen
                             </CommandItem>
                         </CommandGroup>
                     </CommandList>

@@ -36,7 +36,7 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
         const response = await axios.post("/api/panens", value);
         console.log(response.data);
         toast.success("berhasil membuat toko");
-        window.location.assign(`/${response.data.id}`)
+        window.location.assign(`/petani/${response.data.id}`)
         }catch (error){
         toast.error("gagal membuat toko");
     }finally{

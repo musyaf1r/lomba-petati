@@ -49,7 +49,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
   const onSubmit= async(data:SettingFormValues)=>{
    try{
     setLoading(true);
-    await axios.patch(`/api/stores/${params.storeId}`,data)
+    await axios.patch(`/api/stores/${params.panenId}`,data)
     router.refresh()
     toast.success("toko berhasil di update")
    }catch(error){
@@ -62,7 +62,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
   const onDelete = async ()=>{
     try{
       setLoading(true)
-      await axios.delete(`/api/stores/${params.storeId}`)
+      await axios.delete(`/api/stores/${params.panenId}`)
       router.refresh()
       router.push("/")
       toast.success("Toko berhasil di hapus")
@@ -116,7 +116,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
       </form>
     </Form>
     <Separator/>
-    <ApiAlert  title="PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public" />
+    <ApiAlert  title="PUBLIC_API_URL" description={`${origin}/api/${params.panenId}`} variant="public" />
     </>
   )
 }

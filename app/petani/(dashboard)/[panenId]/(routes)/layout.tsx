@@ -24,7 +24,7 @@ export default async function DashboardLayout({
     }
     })
     if(!panen){
-        redirect('/')
+        redirect('/petani/')
     }
 
     const panens =await db.panen.findMany({

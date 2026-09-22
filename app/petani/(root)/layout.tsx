@@ -18,7 +18,7 @@ export default async function SetupLayout({
         }
     })
     if (panen){
-        redirect(`/${panen.id}`)
+        redirect(`/petani/${panen.id}`)
     }
     return(
         <>

@@ -18,14 +18,14 @@ export function MainNav(
     
     const routes=[
         {
-            href:`/${params.PanenId}`,
+            href:`/petani/${params.panenId}`,
             label: 'Dashboard',
-            active: pathname === `/${params.PanenId}`
+            active: pathname === `/petani/${params.panenId}`
         },
          {
-            href:`/${params.PanenId}/settings`,
+            href:`/petani/${params.panenId}/settings`,
             label: 'Settings',
-            active: pathname === `/${params.PanenId}/settings`
+            active: pathname === `/petani/${params.panenId}/settings`
         }
     ]
 
