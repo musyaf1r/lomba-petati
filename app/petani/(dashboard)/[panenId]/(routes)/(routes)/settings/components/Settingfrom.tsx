@@ -17,6 +17,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { AlertModal } from '@/components/modals/alert-modal'
 import { ApiAlert } from '@/components/ui/api-alert'
 import { useOrigin } from '@/hook/use-origin'
+import Link from 'next/link'
 
 
 interface SettingFromProps {
@@ -49,7 +50,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
   const onSubmit= async(data:SettingFormValues)=>{
    try{
     setLoading(true);
-    await axios.patch(`/api/stores/${params.panenId}`,data)
+    await axios.patch(`/api/panens/${params.panenId}`,data)
     router.refresh()
     toast.success("toko berhasil di update")
    }catch(error){
@@ -62,9 +63,9 @@ const SettingFrom: React.FC<SettingFromProps> = ({
   const onDelete = async ()=>{
     try{
       setLoading(true)
-      await axios.delete(`/api/stores/${params.panenId}`)
+      await axios.delete(`/api/panens/${params.panenId}`)
       router.refresh()
-      router.push("/")
+      router.push("/petani")
       toast.success("Toko berhasil di hapus")
     }catch(error){
       toast.error("cek kembali data dan koneksimu")
@@ -83,7 +84,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
     <div className='flex items-center justify-between'>
       <Heading
       title="Setting"
-      description="Manage store preferences"
+      description="Manage panen preferences"
       /> 
       <Button disabled={loading}
       variant="destructive" size="sm" onClick={()=>setOpen(true)}>
@@ -116,7 +117,11 @@ const SettingFrom: React.FC<SettingFromProps> = ({
       </form>
     </Form>
     <Separator/>
-    <ApiAlert  title="PUBLIC_API_URL" description={`${origin}/api/${params.panenId}`} variant="public" />
+    <ApiAlert  title="PUBLIC_API_URL" description={`${origin}/api/panens${params.panenId}`} variant="public" />
+    <Separator/>
+    <div>
+      <Button variant={"outline"} size="sm"><Link href={"/pick-role"}>Ganti peran</Link></Button>
+    </div>
     </>
   )
 }

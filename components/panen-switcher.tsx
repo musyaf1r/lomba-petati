@@ -31,13 +31,13 @@
         const formattedItems = items.map((item)=>({
             label: item.name,
             value: item.id,
-            href: `/panen/${item.id}`
+            href: `/petani/${item.id}`
         }))
     const currentPanen = formattedItems.find((item)=> item.value === params.panenId);
     const [open,setOpen] = useState(false);
     const onPanenSelect = (item:{value:string, label:string,})=>{
         setOpen(false);
-        router.push(`/panen/${item.value}`)
+        router.push(`/petani/${item.value}`)
         router.refresh();
     }
 
