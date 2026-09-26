@@ -1,3 +1,4 @@
+import { Hargaps } from '@/components/hargaps';
 import db from '@/lib/db'
 import React from 'react'
 
@@ -13,9 +14,7 @@ const  Dashboard = async ({params}:Dashboardpageprops) => {
   })
 
   return (
-    <div>
-      Active panen:{panen?.name}
-    </div>
+    <Hargaps></Hargaps>
   )
 }
 
