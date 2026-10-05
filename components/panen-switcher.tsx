@@ -8,10 +8,11 @@
     import { useRouter } from 'next/navigation'
     import { Popover } from './ui/popover'
     import { Button } from './ui/button'
-    import { Check, ChevronsUpDown, PlusCircle, Store as StoreIcon } from 'lucide-react'
+    import { Check, ChevronsUpDown, PlusCircle, } from 'lucide-react'
     import { cn } from '@/lib/utils'
     import { PopoverContent } from './ui/popover'
     import { Command, CommandList,CommandInput,CommandEmpty,CommandGroup,CommandItem, CommandSeparator  } from './ui/command'
+import Image from "next/image"
     type PopOverTriggerProps =  React.ComponentPropsWithoutRef <typeof PopoverTrigger>
 
     interface PanenSwitcherProps extends PopOverTriggerProps{
@@ -43,7 +44,6 @@
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
-            <StoreIcon className="mx-2 h-4 w-4"/>
             <PopoverTrigger 
             render={  <Button variant="outline" size="sm" role="combobox" aria-expanded={open} aria-label="pilih toko " className={cn("w-50 justify-between", className)}>
                     {currentPanen?.label}

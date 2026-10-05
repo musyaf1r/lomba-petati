@@ -13,16 +13,24 @@ export function MainNav(
 }:React.HTMLAttributes<HTMLElement>){
     const pathname=usePathname();
     const params = useParams();
-   
 
-    
     const routes=[
         {
             href:`/petani/${params.panenId}`,
-            label: 'Dashboard',
+            label: 'Home',
             active: pathname === `/petani/${params.panenId}`
         },
-         {
+        {
+            href:`/petani/${params.panenId}/dashboard`,
+            label: 'Dashboard',
+            active: pathname === `/petani/${params.panenId}/dashboard`
+        },
+        {
+            href:`/petani/${params.panenId}/lahan`,
+            label: 'Lahan',
+            active: pathname === `/petani/${params.panenId}/lahan`
+        },
+        {
             href:`/petani/${params.panenId}/settings`,
             label: 'Settings',
             active: pathname === `/petani/${params.panenId}/settings`
@@ -34,7 +42,7 @@ export function MainNav(
         className)}>
             {routes.map((route)=>(
                <Link key={route.href} href={route.href} className={cn('text-sm font-medium transition-colors hover:text-primary',
-                route.active ? "text-black dark:text-white":  "text-muted-foreground"
+                route.active ? "text-black":  "text-white"
                )}>
                {route.label}
                </Link> 

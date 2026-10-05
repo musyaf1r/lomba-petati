@@ -1,6 +1,7 @@
 'use client'
 
 import { PanenModal } from "@/components/modals/panen-modal"
+import { LahanModal } from "@/components/modals/lahan-modal"
 import { useEffect, useState } from "react"
 
 export const ModalProvider =() =>{
@@ -15,6 +16,7 @@ export const ModalProvider =() =>{
     return (
         <>
         <PanenModal/>
+        <LahanModal/>
         </>
     )
 }

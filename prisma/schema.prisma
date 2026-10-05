@@ -18,4 +18,31 @@ model Panen{
   userId String
   createdAt DateTime @default(now())
   updateDat DateTime @updatedAt
+  lahan Lahan[]
+}
+model Lahan {
+  id          String   @id @default(uuid())
+  panenId     String
+  Panen       Panen    @relation(fields: [panenId], references: [id])
+  nama        String
+  lokasi      String
+  luas        Float   
+  komoditas   String?  
+  status      String   @default("kosong") 
+  tanggalTanam DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  hasilPanen  HasilPanen[]
+}
+
+model HasilPanen {
+  id            String   @id @default(uuid())
+  lahanId       String
+  lahan         Lahan    @relation(fields: [lahanId], references: [id])
+  jumlahHasil   Float    
+  satuan        String   @default("kg")
+  hargaSaatPanen Float   
+  totalPendapatan Float   @default(0) 
+  tanggalPanen  DateTime @default(now())
+  createdAt     DateTime @default(now())
 }
