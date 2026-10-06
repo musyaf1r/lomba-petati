@@ -15,27 +15,13 @@ export function MainNav(
     const params = useParams();
 
     const routes=[
-        {
-            href:`/petani/${params.panenId}`,
-            label: 'Home',
-            active: pathname === `/petani/${params.panenId}`
-        },
-        {
-            href:`/petani/${params.panenId}/dashboard`,
-            label: 'Dashboard',
-            active: pathname === `/petani/${params.panenId}/dashboard`
-        },
-        {
-            href:`/petani/${params.panenId}/lahan`,
-            label: 'Lahan',
-            active: pathname === `/petani/${params.panenId}/lahan`
-        },
-        {
-            href:`/petani/${params.panenId}/settings`,
-            label: 'Settings',
-            active: pathname === `/petani/${params.panenId}/settings`
-        }
-    ]
+    { href:`/petani/${params.panenId}`, label: 'Home', active: pathname === `/petani/${params.panenId}` },
+    { href:`/petani/${params.panenId}/dashboard`, label: 'Dashboard', active: pathname === `/petani/${params.panenId}/dashboard` },
+    { href:`/petani/${params.panenId}/lahan`, label: 'Lahan', active: pathname === `/petani/${params.panenId}/lahan` },
+    { href:`/petani/${params.panenId}/planner`, label: 'Planner', active: pathname === `/petani/${params.panenId}/planner` },
+    { href:`/petani/${params.panenId}/panen`, label: 'Panen', active: pathname === `/petani/${params.panenId}/panen` },
+    { href:`/petani/${params.panenId}/settings`, label: 'Settings', active: pathname === `/petani/${params.panenId}/settings` }
+]
 
     return(
         <nav className={cn("flex items-center space-x-4 lg:space-x-6",

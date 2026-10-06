@@ -40,7 +40,10 @@ export const LahanModal = () => {
   const onSubmit = async (values: LahanFormValues) => {
     try {
       setLoading(true)
-      await axios.post(`/api/lahan?panenId=${params.panenId}`, values)
+      await axios.post(`/api/lahan?panenId=${params.panenId}`, {
+        ...values,
+        luas: Number(values.luas),
+      })
       toast.success("Lahan berhasil ditambahkan")
       lahanModal.onClose()
       form.reset()

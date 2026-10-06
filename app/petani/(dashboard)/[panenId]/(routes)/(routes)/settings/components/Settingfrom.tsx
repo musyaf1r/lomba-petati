@@ -117,8 +117,6 @@ const SettingFrom: React.FC<SettingFromProps> = ({
       </form>
     </Form>
     <Separator/>
-    <ApiAlert  title="PUBLIC_API_URL" description={`${origin}/api/panens${params.panenId}`} variant="public" />
-    <Separator/>
     <div>
       <Button variant={"outline"} size="sm"><Link href={"/pick-role"}>Ganti peran</Link></Button>
     </div>

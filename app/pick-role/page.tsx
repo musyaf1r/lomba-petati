@@ -11,7 +11,7 @@ import toast from 'react-hot-toast'
 
 const roles=[
     {value:"petani",
-     title:"petani/peternak",
+     title:"petani",
      description:"Pilih sebagai petani dan masukan panen anda",
      image:"",
      redirect:"/petani",

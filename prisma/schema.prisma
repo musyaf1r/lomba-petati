@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
 }
 
 model Panen{
@@ -19,6 +19,7 @@ model Panen{
   createdAt DateTime @default(now())
   updateDat DateTime @updatedAt
   lahan Lahan[]
+  produk Produk[]
 }
 model Lahan {
   id          String   @id @default(uuid())
@@ -45,4 +46,17 @@ model HasilPanen {
   totalPendapatan Float   @default(0) 
   tanggalPanen  DateTime @default(now())
   createdAt     DateTime @default(now())
+}
+model Produk {
+  id          String   @id @default(uuid())
+  panenId     String
+  panen       Panen    @relation(fields: [panenId], references: [id])
+  namaPetani  String
+  namaBarang  String
+  hargaJual   Float
+  stok        Float
+  satuan      String   @default("kg")
+  fotoUrl     String?
+  nomorHp     String
+  createdAt   DateTime @default(now())
 }
