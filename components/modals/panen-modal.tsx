@@ -38,7 +38,7 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
         setloading(true)
         const response = await axios.post("/api/panens", value);
         console.log(response.data);
-        toast.success("berhasil menambahakan hasil panen");
+        toast.success("berhasil menambahakan toko");
         panenModal.onClose(); 
         window.location.assign(`/petani/${response.data.id}`)
         }catch (error){
@@ -50,8 +50,8 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
 };
     return (
         <Modal
-        title="tambahkan Panen"
-        description="tambah kan hasil panen dari ladang anda"
+        title="tambahkan Toko"
+        description="tambah kan toko untuk anda"
         isOpen={panenModal.isOpen}
         onClose={panenModal.onClose}
         >
@@ -64,10 +64,10 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
                      name="name"
                      render={({field})=>(
                         <FormItem>
-                            <FormLabel>hasil Panen</FormLabel>
+                            <FormLabel>Toko</FormLabel>
                             <FormControl>
                                 <Input
-                                placeholder='Hasil Panen' {...field}
+                                placeholder='Toko anda' {...field}
                                 disabled={loading}
                                 />
                             </FormControl>

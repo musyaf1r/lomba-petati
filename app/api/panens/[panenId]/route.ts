@@ -56,6 +56,9 @@ export async function DELETE(
             return new NextResponse("panen id dibutuhkan", { status: 400 })
         }
 
+        await db.produk.deleteMany({ where: { panenId } })
+        await db.lahan.deleteMany({ where: { panenId } })
+        
         const panen = await db.panen.deleteMany({
             where: {
                 id: panenId,

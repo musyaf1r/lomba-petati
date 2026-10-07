@@ -84,7 +84,7 @@ const SettingFrom: React.FC<SettingFromProps> = ({
     <div className='flex items-center justify-between'>
       <Heading
       title="Setting"
-      description="Manage panen preferences"
+      description="Kelola toko anda disini"
       /> 
       <Button disabled={loading}
       variant="destructive" size="sm" onClick={()=>setOpen(true)}>
@@ -117,7 +117,11 @@ const SettingFrom: React.FC<SettingFromProps> = ({
       </form>
     </Form>
     <Separator/>
-    <div>
+    <div className="space-y-3">
+      <Heading
+      title="Role"
+      description="Kembali ke halaman pemilihan peran untuk menganti peran anda"
+      /> 
       <Button variant={"outline"} size="sm"><Link href={"/pick-role"}>Ganti peran</Link></Button>
     </div>
     </>

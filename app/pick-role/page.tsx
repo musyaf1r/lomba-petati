@@ -13,13 +13,13 @@ const roles=[
     {value:"petani",
      title:"petani",
      description:"Pilih sebagai petani dan masukan panen anda",
-     image:"",
+     image:"/img/petani.png",
      redirect:"/petani",
     },
     {value:"user",
      title:"konsumen",
      description:"pilih sebagai konsumen untuk melihan dan memesan",
-     image:"",
+     image:"/img/user.png",
      redirect:"/user"
     
     }

@@ -30,8 +30,8 @@ export const AlertModal:React.FC<AlertModalProps> = ({
 
     return (
         <Modal
-        title="are you sure"
-        description="this action cant be undone"
+        title="Apakah anda yakin?"
+        description="Setelah di hapus file akan hilang permanent"
         isOpen={isOpen}
         onClose={onClose}
         >

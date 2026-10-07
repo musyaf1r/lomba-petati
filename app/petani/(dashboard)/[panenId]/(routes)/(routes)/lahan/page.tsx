@@ -30,14 +30,15 @@ export default async function LahanPage({ params }: LahanPageProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {lahanList.map((lahan) => (
           <LahanCard
-            key={lahan.id}
-            nama={lahan.nama}
-            lokasi={lahan.lokasi}
-            luas={lahan.luas}
-            status={lahan.status}
-            komoditas={lahan.komoditas}
-            tanggalTanam={lahan.tanggalTanam}
-          />
+          key={lahan.id}
+          id={lahan.id}
+          nama={lahan.nama}
+          lokasi={lahan.lokasi}
+          luas={lahan.luas}
+          status={lahan.status}
+          komoditas={lahan.komoditas}
+          tanggalTanam={lahan.tanggalTanam}
+        />
         ))}
 
         <LahanClient />

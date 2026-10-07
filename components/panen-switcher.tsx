@@ -54,11 +54,11 @@ import Image from "next/image"
             <PopoverContent className="w-50 p-0">
                 <Command>
                     <CommandList>
-                        <CommandInput placeholder="Search Panen..." />
+                        <CommandInput placeholder="Search toko..." />
                         <CommandEmpty>
                         toko tidak ditemukan
                         </CommandEmpty>
-                        <CommandGroup heading="Hasil panen">
+                        <CommandGroup heading="Toko anda">
                             {formattedItems.map((item)=>(
                                 <CommandItem key={item.value} onSelect={()=>onPanenSelect(item)} className="text-sm">
                                     
@@ -75,7 +75,7 @@ import Image from "next/image"
                                 setOpen(false);
                                 PanenModal.onOpen();
                             }}>
-                                <PlusCircle className="mr2 h-5 w-5"/> Tambahkan Panen
+                                <PlusCircle className="mr2 h-5 w-5"/> Tambahkan Toko
                             </CommandItem>
                         </CommandGroup>
                     </CommandList>

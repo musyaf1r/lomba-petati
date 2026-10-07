@@ -1,12 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import {LandingPage} from "@/components/landingpage"
 
 
 export default async function Rootpage() {
     const {userId,sessionClaims} = await auth()
     if(!userId)
         {
-            redirect("/sign-in")
+            return <LandingPage />
         }
 
         const role =(sessionClaims?.mentadata as {role?:string})?.role
