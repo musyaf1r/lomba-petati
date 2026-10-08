@@ -33,7 +33,6 @@ export default async function PanenPage({ params }: PanenPageProps) {
         {produkList.map((produk) => (
           <div key={produk.id} className="border rounded-lg overflow-hidden">
             {produk.fotoUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
               <img src={produk.fotoUrl} alt={produk.namaBarang} className="w-full h-32 object-cover" />
             )}
             <div className="p-4 space-y-1">

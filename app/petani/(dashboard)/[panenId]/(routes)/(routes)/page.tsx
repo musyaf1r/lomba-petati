@@ -161,7 +161,6 @@ export default async function HomePage({ params }: HomePageProps) {
             {produkTerbaru.map((produk) => (
               <div key={produk.id} className="bg-white border border-[#e4dfd3] rounded-2xl overflow-hidden">
                 {produk.fotoUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={produk.fotoUrl} alt={produk.namaBarang} className="w-full h-32 object-cover" />
                 ) : (
                   <div className="w-full h-32 bg-[#eef2e2] flex items-center justify-center text-xs text-muted-foreground">
