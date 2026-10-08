@@ -1,61 +1,57 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import db from "@/lib/db";
-import { Phone } from "lucide-react";
+import { MessageCircle, Package, Search, Store } from "lucide-react"
+import db from "@/lib/db"
+import { MarketplaceClient } from "@/components/marketplace-client"
+
+const caraBelanja = [
+  { icon: Search, judul: "Cari produk", teks: "Ketik nama barang atau pilih daerah yang kamu mau." },
+  { icon: Store, judul: "Kenali penjualnya", teks: "Lihat nama petani dan toko tempat hasil panen berasal." },
+  { icon: MessageCircle, judul: "Hubungi langsung", teks: "Chat petani lewat WhatsApp untuk sepakat soal harga dan jumlah." },
+]
 
 export default async function PenggunaPage() {
-  const { userId } = await auth();
-  if (!userId) redirect("/sign-in");
 
   const produkList = await db.produk.findMany({
     orderBy: { createdAt: "desc" },
-  });
+    include: { panen: { select: { name: true } } },
+  })
 
+  const data = produkList.map((p) => ({
+    id: p.id,
+    namaBarang: p.namaBarang,
+    namaPetani: p.namaPetani,
+    namaToko: p.panen.name,
+    daerah: p.daerah,
+    hargaJual: p.hargaJual,
+    stok: p.stok,
+    satuan: p.satuan,
+    fotoUrl: p.fotoUrl,
+    nomorHp: p.nomorHp,
+  }))
   return (
-    <div className="p-8 space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">Hasil Panen Petani</h1>
-        <p className="text-muted-foreground">Lihat dan hubungi petani langsung</p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {produkList.map((produk) => (
-          <div key={produk.id} className="border rounded-lg overflow-hidden">
-            {produk.fotoUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={produk.fotoUrl} alt={produk.namaBarang} className="w-full h-36 object-cover" />
-            ) : (
-              <div className="w-full h-36 bg-muted flex items-center justify-center text-muted-foreground text-sm">
-                Tidak ada foto
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+      <section className="space-y-3">
+        <h2 className="text-lg font-bold text-[#8a4a2a]">Cara Belanja</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          {caraBelanja.map((c, i) => (
+            <div key={c.judul} className="border border-[#c9c4b8] bg-white rounded-2xl p-4 flex gap-3">
+              <div className="h-9 w-9 shrink-0 rounded-full bg-[#4a5d3a] text-white flex items-center justify-center">
+                <c.icon className="h-4 w-4" />
               </div>
-            )}
-            <div className="p-4 space-y-1">
-              <p className="font-semibold">{produk.namaBarang}</p>
-              <p className="text-lg font-bold">
-                Rp{produk.hargaJual.toLocaleString("id-ID")}
-                <span className="text-xs font-normal text-muted-foreground">/{produk.satuan}</span>
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Stok: {produk.stok} {produk.satuan}
-              </p>
-              <p className="text-sm">Penjual: {produk.namaPetani}</p>
-
-              <a
-                href={`https://wa.me/${produk.nomorHp.replace(/^0/, "62").replace(/\D/g, "")}`}
-                target="_blank"
-                className="mt-2 inline-flex items-center gap-2 text-sm bg-green-600 text-white px-3 py-2 rounded-md"
-              >
-                <Phone className="h-4 w-4" />
-                Hubungi {produk.nomorHp}
-              </a>
+              <div>
+                <p className="font-semibold text-sm">
+                  {i + 1}. {c.judul}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">{c.teks}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
 
-        {produkList.length === 0 && (
-          <p className="text-sm text-muted-foreground">Belum ada produk dari petani.</p>
-        )}
-      </div>
+      <section className="space-y-3">
+        <h2 className="text-lg font-bold text-[#8a4a2a]">Hasil Panen Tersedia</h2>
+        <MarketplaceClient produkList={data} />
+      </section>
     </div>
-  );
+  )
 }

@@ -40,15 +40,6 @@ export const LandingPage = () => {
                 <Image src="/img/lg.png" alt="Pasartani" fill className="object-contain" />
             </div>
         </Link>
-
-        <div className="hidden md:flex items-center gap-6 text-sm text-white/90">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <Link href="#tentang" className="hover:text-white transition-colors">Tentang Pasartani</Link>
-            <Link href="#cara-kerja" className="hover:text-white transition-colors">Cara Kerja</Link>
-                <Link href="#petani" className="hover:text-white transition-colors">Untuk Petani</Link>
-                <Link href="#pembeli" className="hover:text-white transition-colors">Untuk Pembeli</Link>
-        </div>
-
         <Link
             href="/sign-in"
             className={cn(

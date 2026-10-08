@@ -17,6 +17,10 @@ export async function POST(req: Request) {
     if (!hargaJual) return new NextResponse("Harga wajib diisi", { status: 400 });
     if (!stok) return new NextResponse("Stok wajib diisi", { status: 400 });
     if (!nomorHp) return new NextResponse("Nomor HP wajib diisi", { status: 400 });
+     if (fotoUrl && (!String(fotoUrl).startsWith("data:image/") || String(fotoUrl).length > 1_500_000)) {
+      return new NextResponse("Foto tidak valid atau terlalu besar", { status: 400 });
+    }
+
     if (!panenId) return new NextResponse("panenId dibutuhkan", { status: 400 });
 
     const panenByUserId = await db.panen.findFirst({

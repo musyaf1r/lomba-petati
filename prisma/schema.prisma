@@ -53,7 +53,7 @@ model Produk {
   panen       Panen    @relation(fields: [panenId], references: [id])
   namaPetani  String
   namaBarang  String
-  daerah     String
+  daerah     String @default("-")
   hargaJual   Float
   stok        Float
   satuan      String   @default("kg")
