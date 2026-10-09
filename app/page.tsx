@@ -10,7 +10,7 @@ export default async function Rootpage() {
             return <LandingPage />
         }
 
-        const role =(sessionClaims?.mentadata as {role?:string})?.role
+        const role =(sessionClaims?.metadata as {role?:string})?.role
         if(!role)
             {
                 redirect("/pick-role")
@@ -18,9 +18,6 @@ export default async function Rootpage() {
             if(role==="petani")
             {
                 redirect("/petani")
-            }
-            if(role === "user")
-            {
-                redirect("/user")
-            }
+            } 
+              redirect("/user")
 }

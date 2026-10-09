@@ -10,7 +10,7 @@ export default async function DashboardLayout({
 
 }:{
     children:React.ReactNode;
-    params:{panenId:string};
+    params:Promise<{panenId:string}>;
 }) {
     const {userId}= await auth();
     if(!userId){
