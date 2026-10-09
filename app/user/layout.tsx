@@ -1,44 +1,51 @@
-import Link from "next/link"
-import Image from "next/image"
-import { SignOutButton, UserButton } from "@clerk/nextjs"
-import { auth } from "@clerk/nextjs/server"
-import { redirect } from "next/navigation"
+'use client'
 
-export default async function PenggunaLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const { userId } = await auth()
-  if (!userId) redirect("/sign-in")
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { UserButton } from '@clerk/nextjs'
+import { cn } from '@/lib/utils'
+
+const menu = [
+  { label: 'Home', href: '/user' },
+  { label: 'Ganti Role', href: '/pick-role' },
+]
+
+export default function UserLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
 
   return (
-    <div className="min-h-screen bg-[#fdfaf4]">
+    <>
       <header className="sticky top-0 z-50 w-full bg-[#52613A] shadow-sm">
-        <nav className="flex items-center justify-between px-4 sm:px-6 h-16 max-w-6xl mx-auto">
-          <Link href="/pengguna" className="flex items-center gap-2 text-white font-semibold">
-            <div className="relative h-10 w-50 ">
-              <Image src="/img/lg.png" alt="logo" fill className="object-contain"/>
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-3 sm:h-16 sm:px-6">
+          <Link href="/user" className="flex min-w-0 items-center">
+            <div className="relative h-8 w-28 sm:h-10 sm:w-44">
+              <Image src="/img/lg.png" alt="Pasartani" fill className="object-contain object-left" />
             </div>
           </Link>
 
-          <div className="flex items-center gap-4 sm:gap-6 text-sm">
-            <Link href="/pengguna" className="text-white font-medium">
-              Home
-            </Link>
+          <nav className="flex shrink-0 items-center gap-3 sm:gap-5">
+            {menu.map((m) => (
+              <Link
+                key={m.href}
+                href={m.href}
+                aria-label={m.label}
+                className={cn(
+                  'inline-flex items-center gap-1.5 text-sm font-medium text-white underline-offset-4 hover:underline active:underline',
+                  pathname === m.href && 'underline'
+                )}
+              >
+                {m.icon && <m.icon className="h-4 w-4" />}
+                <span className={cn(m.icon && 'hidden sm:inline')}>{m.label}</span>
+              </Link>
+            ))}
 
-            <Link
-              href="/pick-role"
-              className="inline-flex items-center gap-1 text-white/80 hover:text-white transition-colors"
-            >
-              <p className="hidden sm:inline">Ganti Peran</p>
-            </Link>
             <UserButton />
-          </div>
-        </nav>
+          </nav>
+        </div>
       </header>
 
-      {children}
-    </div>
+      <main>{children}</main>
+    </>
   )
 }
