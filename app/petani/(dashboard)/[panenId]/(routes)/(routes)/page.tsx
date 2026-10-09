@@ -24,8 +24,8 @@ export default async function HomePage({ params }: HomePageProps) {
   const { userId } = await auth()
   if (!userId) redirect("/sign-in")
 
-  const user = await currentUser()
-  const username = user?.firstName ?? "Petani"
+const user = await currentUser()
+const username = user?.username ?? user?.firstName ?? "Petani"
 
   const { panenId } = await params
   const base = `/petani/${panenId}`
