@@ -4,10 +4,11 @@ import { useState } from "react"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
-import { Trash } from "lucide-react"
+import { Settings2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { AlertModal } from "@/components/modals/alert-modal"
+import { AturProdukModal } from "@/components/modals/atur-produk-modal"
 
 interface ProdukCardProps {
   id: string
@@ -28,6 +29,7 @@ export const ProdukCard = ({
 }: ProdukCardProps) => {
   const router = useRouter()
   const [openDelete, setOpenDelete] = useState(false)
+  const [openAtur, setOpenAtur] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const onDelete = async () => {
@@ -53,18 +55,21 @@ export const ProdukCard = ({
         loading={loading}
       />
 
-      <div className="relative border rounded-lg overflow-hidden">
-        <Button
-          type="button"
-          variant="destructive"
-          size="icon"
-          disabled={loading}
-          onClick={() => setOpenDelete(true)}
-          className="absolute top-2 right-2 z-10 h-8 w-8 hover:text-red-600"
-        >
-          <Trash className="h-4 w-4" />
-        </Button>
+      <AturProdukModal
+        isOpen={openAtur}
+        onClose={() => setOpenAtur(false)}
+        onHapus={() => {
+          setOpenAtur(false)
+          setOpenDelete(true)
+        }}
+        produkId={id}
+        namaBarang={namaBarang}
+        hargaJual={hargaJual}
+        stok={stok}
+        satuan={satuan}
+      />
 
+      <div className="border rounded-lg overflow-hidden">
         {fotoUrl && (
           <img src={fotoUrl} alt={namaBarang} className="w-full h-32 object-cover" />
         )}
@@ -75,8 +80,19 @@ export const ProdukCard = ({
             <span className="text-xs font-normal text-muted-foreground">/{satuan}</span>
           </p>
           <p className="text-sm text-muted-foreground">
-            Stok: {stok} {satuan}
+            {stok > 0 ? `Stok: ${stok} ${satuan}` : "Stok habis"}
           </p>
+
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-3 w-full"
+            onClick={() => setOpenAtur(true)}
+          >
+            <Settings2 className="h-4 w-4 mr-2" />
+            Atur stok &amp; harga
+          </Button>
         </div>
       </div>
     </>
