@@ -151,7 +151,7 @@ export const MarketplaceClient = ({ produkList }: MarketplaceClientProps) => {
                 <MapPin className="h-3 w-3 text-[#4a5d3a]" />
                 {produk.daerah}
               </span>
-               {produk.HapusProduk && <DeleteProdukButton produkId={produk.id} />}
+              {produk.HapusProduk && <DeleteProdukButton produkId={produk.id} />}
             </div>
 
             <div className="p-4 flex flex-col gap-3 flex-1">

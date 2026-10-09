@@ -1,9 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import db from "@/lib/db";
-
-import { ProdukClient } from "./component/panen-client";
 import { ProdukCard } from "@/components/produk-card";
+import { ProdukClient } from "./component/panen-client";
 
 interface PanenPageProps {
   params: Promise<{ panenId: string }>;
