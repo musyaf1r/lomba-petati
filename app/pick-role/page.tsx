@@ -11,13 +11,13 @@ import toast from 'react-hot-toast'
 
 const roles=[
     {value:"petani",
-     title:"petani",
+     title:"Petani",
      description:"Pilih sebagai petani dan masukan panen anda",
      image:"/img/petani.png",
      redirect:"/petani",
     },
     {value:"user",
-     title:"konsumen",
+     title:"Konsumen",
      description:"pilih sebagai konsumen untuk melihan dan memesan",
      image:"/img/user.png",
      redirect:"/user"
