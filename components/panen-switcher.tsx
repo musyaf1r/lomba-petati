@@ -12,9 +12,7 @@
     import { cn } from '@/lib/utils'
     import { PopoverContent } from './ui/popover'
     import { Command, CommandList,CommandInput,CommandEmpty,CommandGroup,CommandItem, CommandSeparator  } from './ui/command'
-import Image from "next/image"
     type PopOverTriggerProps =  React.ComponentPropsWithoutRef <typeof PopoverTrigger>
-
     interface PanenSwitcherProps extends PopOverTriggerProps{
         items: Panen [];
     }

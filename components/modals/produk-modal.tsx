@@ -25,8 +25,6 @@ const formSchema = z.object({
 })
 
 type ProdukFormValues = z.infer<typeof formSchema>
-
-// Kecilkan gambar di browser sebelum dikirim (maks 800px, JPEG)
 const kompresGambar = (file: File, maxSize = 800, quality = 0.7): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader()

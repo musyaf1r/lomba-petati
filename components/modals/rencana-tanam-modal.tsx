@@ -54,8 +54,6 @@ export const RencanaTanamModal = ({
   const komoditasTerpilih = hargaList.find((h) => h.id === komoditasId)
   const modal = Number(modalTanam) || 0
   const perM2 = Number(hasilPerM2) || 0
-
-  // Total hasil dihitung dari luas lahan x estimasi hasil per m2
   const totalHasil = perM2 * luas
   const pendapatan = totalHasil * (komoditasTerpilih?.harga ?? 0)
   const untung = pendapatan - modal

@@ -1,5 +1,4 @@
 import { UserButton } from '@clerk/nextjs'
-import React from 'react'
 
 import PanenSwitcher from './panen-switcher'
 import { auth } from '@clerk/nextjs/server'

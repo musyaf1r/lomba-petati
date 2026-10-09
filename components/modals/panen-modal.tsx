@@ -13,7 +13,6 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { useState } from 'react';
 import toast from 'react-hot-toast'
-import { useRouter } from 'next/navigation'
 
 const formSchema =z.object({
     name:z.string().min(1),
@@ -31,18 +30,16 @@ export const PanenModal = () => {
         name:"",
     }
 });
-
-const router=useRouter()
 const onSumbit = async (value:z.infer<typeof formSchema>)=>{
     try {
         setloading(true)
         const response = await axios.post("/api/panens", value);
         console.log(response.data);
-        toast.success("berhasil menambahakan toko");
+        toast.success("Berhasil menambahakan toko");
         panenModal.onClose(); 
         window.location.assign(`/petani/${response.data.id}`)
         }catch (error){
-        toast.error("gagal membuat toko");
+        toast.error("Gagal membuat toko");
     }finally{
         setloading(false);
     }
@@ -50,8 +47,8 @@ const onSumbit = async (value:z.infer<typeof formSchema>)=>{
 };
     return (
         <Modal
-        title="tambahkan Toko"
-        description="tambah kan toko untuk anda"
+        title="Tambahkan Toko"
+        description="Tambahkan toko untuk anda"
         isOpen={panenModal.isOpen}
         onClose={panenModal.onClose}
         >

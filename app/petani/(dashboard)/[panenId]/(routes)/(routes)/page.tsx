@@ -59,7 +59,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="p-4 sm:p-8 space-y-8 max-w-6xl mx-auto">
-      <section className="rounded-3xl bg-gradient-to-br from-[#52613A] to-[#7a8f4f] text-white p-6 sm:p-8">
+      <section className="rounded-3xl bg-linear-to-br from-[#52613A] to-[#7a8f4f] text-white p-6 sm:p-8">
         <p className="text-sm text-white/80">{hariIni}</p>
         <h1 className="text-2xl sm:text-3xl font-bold mt-1">Selamat datang, {username} </h1>
         <p className="mt-2 text-white/85">
@@ -88,7 +88,7 @@ export default async function HomePage({ params }: HomePageProps) {
         {statistik.map((s) => (
           <div key={s.label} className="bg-[#c9d6a8] rounded-2xl p-4 sm:p-5">
             <s.icon className="h-5 w-5 text-[#4a5d3a]" />
-            <p className="text-xl sm:text-2xl font-bold mt-2 break-words">{s.nilai}</p>
+            <p className="text-xl sm:text-2xl font-bold mt-2 wrap-break-words">{s.nilai}</p>
             <p className="text-xs sm:text-sm text-[#3a2e22]/80">{s.label}</p>
           </div>
         ))}

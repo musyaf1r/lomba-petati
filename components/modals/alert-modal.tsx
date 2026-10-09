@@ -36,9 +36,9 @@ export const AlertModal:React.FC<AlertModalProps> = ({
         onClose={onClose}
         >
             <div className="pt-6 space-x-2 flex item ">
-                <Button disabled={loading} variant={"outline"} onClick={onClose}>Cancel
+                <Button disabled={loading} variant={"outline"} onClick={onClose}>Batal
                 </Button>
-                <Button disabled={loading} variant={"destructive"} onClick={onConfirm}>Continue
+                <Button disabled={loading} variant={"destructive"} onClick={onConfirm}>Lanjutkan
                 </Button>
             </div>
         </Modal>

@@ -26,8 +26,6 @@ export async function POST(req: Request) {
     if (!panenId) {
       return new NextResponse("panenId dibutuhkan", { status: 400 });
     }
-
-    // Pastikan workspace ini memang milik user yang login
     const panenByUserId = await db.panen.findFirst({
       where: { id: panenId, userId },
     });

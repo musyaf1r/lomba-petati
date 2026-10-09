@@ -1,4 +1,4 @@
-import { MessageCircle, Package, Search, Store } from "lucide-react"
+import { MessageCircle,Search, Store } from "lucide-react"
 import db from "@/lib/db"
 import { MarketplaceClient } from "@/components/marketplace-client"
 

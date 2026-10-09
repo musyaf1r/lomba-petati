@@ -57,13 +57,13 @@ const onSelect = async(role:(typeof roles)[number])=>{
             <h1 className='text-lg md:text-2xl font-bold'>Pilih peran</h1>
             <p className='text-xs md:text-base text-muted-foreground'>pilih salah satu untuk melanjutkan</p>
         </div>
-        <div className="grid grid-cols-2 gap-2 md:gap-6 w-full max-w-[280px] md:max-w-2xl">
+        <div className="grid grid-cols-2 gap-2 md:gap-6 w-full max-w-70 md:max-w-2xl">
             {roles.map((role)=>(
                 <Card key={role.value} onClick={()=>!loading && onSelect(role)}
                 className={cn("cursor-pointer transition hover:border-primary hover:shadow-md overflow-hidden py-0",
                     loading && 'pointer-events-none opacity-50',seleted === role.value && "border-primary"
                 )}>
-                    <div className='relative w-full aspect-[4/3] md:aspect-square'>
+                    <div className='relative w-full aspect-4/3 md:aspect-square'>
                         <Image src={role.image} alt={role.title} fill className="object-cover" />
                     </div>
                     <CardHeader className='p-2 md:p-6 gap-0.5 md:gap-1.5'>
