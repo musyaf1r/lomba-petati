@@ -35,8 +35,6 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
                   pathname === m.href && 'underline'
                 )}
               >
-                {m.icon && <m.icon className="h-4 w-4" />}
-                <span className={cn(m.icon && 'hidden sm:inline')}>{m.label}</span>
               </Link>
             ))}
 
