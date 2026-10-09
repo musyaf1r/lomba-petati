@@ -1,4 +1,5 @@
-import { MessageCircle,Search, Store } from "lucide-react"
+import { MessageCircle, Search, Store } from "lucide-react"
+import { auth } from "@clerk/nextjs/server"
 import db from "@/lib/db"
 import { MarketplaceClient } from "@/components/marketplace-client"
 
@@ -9,10 +10,11 @@ const caraBelanja = [
 ]
 
 export default async function PenggunaPage() {
+  const { userId } = await auth()
 
   const produkList = await db.produk.findMany({
     orderBy: { createdAt: "desc" },
-    include: { panen: { select: { name: true } } },
+    include: { panen: { select: { name: true, userId: true } } },
   })
 
   const data = produkList.map((p) => ({
@@ -26,7 +28,9 @@ export default async function PenggunaPage() {
     satuan: p.satuan,
     fotoUrl: p.fotoUrl,
     nomorHp: p.nomorHp,
+    HapusProduk: !!userId && p.panen.userId === userId,
   }))
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-10">
       <section className="space-y-3">

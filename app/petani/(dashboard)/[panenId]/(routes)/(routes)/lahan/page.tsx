@@ -21,6 +21,7 @@ export default async function LahanPage({ params }: LahanPageProps) {
   });
 
   return (
+    
     <div className="p-8 space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Lahan</h1>
@@ -28,6 +29,7 @@ export default async function LahanPage({ params }: LahanPageProps) {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
         {lahanList.map((lahan) => (
           <LahanCard
           key={lahan.id}

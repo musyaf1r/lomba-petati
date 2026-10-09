@@ -1,8 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import db from "@/lib/db";
-import { ProdukClient } from "./component/panen-client";
 
+import { ProdukClient } from "./component/panen-client";
+import { ProdukCard } from "@/components/produk-card";
 
 interface PanenPageProps {
   params: Promise<{ panenId: string }>;
@@ -31,21 +32,15 @@ export default async function PanenPage({ params }: PanenPageProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {produkList.map((produk) => (
-          <div key={produk.id} className="border rounded-lg overflow-hidden">
-            {produk.fotoUrl && (
-              <img src={produk.fotoUrl} alt={produk.namaBarang} className="w-full h-32 object-cover" />
-            )}
-            <div className="p-4 space-y-1">
-              <p className="font-semibold">{produk.namaBarang}</p>
-              <p className="text-lg font-bold">
-                Rp{produk.hargaJual.toLocaleString("id-ID")}
-                <span className="text-xs font-normal text-muted-foreground">/{produk.satuan}</span>
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Stok: {produk.stok} {produk.satuan}
-              </p>
-            </div>
-          </div>
+          <ProdukCard
+            key={produk.id}
+            id={produk.id}
+            namaBarang={produk.namaBarang}
+            hargaJual={produk.hargaJual}
+            stok={produk.stok}
+            satuan={produk.satuan}
+            fotoUrl={produk.fotoUrl}
+          />
         ))}
 
         {produkList.length === 0 && (

@@ -1,7 +1,12 @@
 'use client'
 
 import { useMemo, useState } from "react"
-import { MapPin, PackageOpen, Phone, Search, Store, User } from "lucide-react"
+import axios from "axios"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
+import { MapPin, PackageOpen, Phone, Search, Store, Trash, User } from "lucide-react"
+
+import { AlertModal } from "@/components/modals/alert-modal"
 import { Input } from "@/components/ui/input"
 
 interface Produk {
@@ -15,6 +20,48 @@ interface Produk {
   satuan: string
   fotoUrl: string | null
   nomorHp: string
+  HapusProduk: boolean
+}
+interface DeleteProdukButtonProps {
+  produkId: string
+}
+export const DeleteProdukButton = ({ produkId }: DeleteProdukButtonProps) => {
+  const router = useRouter()
+  const [openDelete, setOpenDelete] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const onDelete = async () => {
+    try {
+      setLoading(true)
+      await axios.delete(`/api/produk/${produkId}`)
+      toast.success("Hasil panen berhasil dihapus")
+      router.refresh()
+    } catch (err) {
+      toast.error("Gagal menghapus hasil panen")
+    } finally {
+      setLoading(false)
+      setOpenDelete(false)
+    }
+  }
+
+  return (
+    <>
+      <AlertModal
+        isOpen={openDelete}
+        onClose={() => setOpenDelete(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
+
+      <button
+        type="button"
+        onClick={() => setOpenDelete(true)}
+        className="absolute top-3 right-3 text-muted-foreground hover:text-red-600 transition-colors"
+      >
+        <Trash className="h-4 w-4" />
+      </button>
+    </>
+  )
 }
 
 interface MarketplaceClientProps {
@@ -104,6 +151,7 @@ export const MarketplaceClient = ({ produkList }: MarketplaceClientProps) => {
                 <MapPin className="h-3 w-3 text-[#4a5d3a]" />
                 {produk.daerah}
               </span>
+               {produk.HapusProduk && <DeleteProdukButton produkId={produk.id} />}
             </div>
 
             <div className="p-4 flex flex-col gap-3 flex-1">
