@@ -39,11 +39,28 @@ export const LandingPage = () => {
                 <Image src="/img/lg.png" alt="Pasartani" fill className="object-contain" />
             </div>
         </Link>
+         <div className="hidden md:flex items-center gap-6 text-sm text-white">
+          <Link className="hover:underline" href="/">
+            Home
+          </Link>
+          <Link className="hover:underline" href="#tentang">
+            Tentang Pasartani
+          </Link>
+          <Link className="hover:underline" href="#cara-kerja">
+            Cara Kerja
+          </Link>
+          <Link className="hover:underline" href="#petani">
+            Untuk Petani
+          </Link>
+          <Link className="hover:underline" href="#pembeli">
+            Untuk Pembeli
+          </Link>
+        </div>
         <Link
             href="/sign-in"
             className={cn(
-                buttonVariants({ size: "sm" }),
-                "rounded-full bg-white text-[#4a5d3a] hover:bg-white/90 font-medium"
+                buttonVariants({ size: "lg" }),
+                "rounded-4xl bg-white text-[#4a5d3a] hover:bg-white/90 font-medium px-5"
             )}
         >
             Login
