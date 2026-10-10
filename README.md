@@ -52,15 +52,15 @@ Tangkapan Layar / Demo (Screenshots)
     <td width="50%" align="center"><img src="docs/screenshots/lahan.png" alt="Daftar Lahan" width="100%" /></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/screenshots/lahanform.png" alt="Form Tambah Lahan" width="100%" /></td>
-    <td width="50%" align="center"><img src="docs/screenshots/detail.png" alt="Detail Lahan" width="100%" /></td>
+    <td width="50%" align="center"><img src="lahanform.png" alt="Form Tambah Lahan" width="100%" /></td>
+    <td width="50%" align="center"><img src="detail.png" alt="Detail Lahan" width="100%" /></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/screenshots/panen.png" alt="Daftar Hasil Panen" width="100%" /></td>
-    <td width="50%" align="center"><img src="docs/screenshots/formpanen.png" alt="Form Tambah Hasil Panen" width="100%" /></td>
+    <td width="50%" align="center"><img src="panen.png" alt="Daftar Hasil Panen" width="100%" /></td>
+    <td width="50%" align="center"><img src="formpanen.png" alt="Form Tambah Hasil Panen" width="100%" /></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="docs/screenshots/editstock.png" alt="Atur Stok dan Harga" width="50%" /></td>
+    <td colspan="2" align="center"><img src="editstock.png" alt="Atur Stok dan Harga" width="50%" /></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><sub>(Tampilan Manajemen Toko, Lahan &amp; Hasil Panen)</sub></td>
