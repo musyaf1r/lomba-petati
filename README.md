@@ -263,3 +263,8 @@ Kami menyambut baik segala bentuk kontribusi untuk pengembangan PasarTani!
 ---
 
 <p align="center">Dikembangkan untuk mendukung Ketahanan Pangan &amp; Agritech Indonesia 🇮🇩</p>
+<p align="center">by: TIERISON
+member's:
+1. Satrya Khanza Al-Faruq Kurniawan - Developer 
+2. Aiko Zafira Meisya - Product Manager 
+3. Giantsany Nur Rohma Hidayati - Designer</p>
