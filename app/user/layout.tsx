@@ -20,7 +20,13 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-3 sm:h-16 sm:px-6">
           <Link href="/user" className="flex min-w-0 items-center">
             <div className="relative h-8 w-28 sm:h-10 sm:w-44">
-              <Image src="/img/lg.png" alt="Pasartani" fill className="object-contain object-left" />
+              <Image
+                src="/img/lg.png"
+                alt="Pasartani"
+                fill
+                sizes="176px"
+                className="object-contain object-left"
+              />
             </div>
           </Link>
 
@@ -29,12 +35,13 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
               <Link
                 key={m.href}
                 href={m.href}
-                aria-label={m.label}
+                aria-current={pathname === m.href ? 'page' : undefined}
                 className={cn(
-                  'inline-flex items-center gap-1.5 text-sm font-medium text-white underline-offset-4 hover:underline active:underline',
+                  'text-sm font-medium text-white underline-offset-4 hover:underline',
                   pathname === m.href && 'underline'
                 )}
               >
+                {m.label}
               </Link>
             ))}
 
