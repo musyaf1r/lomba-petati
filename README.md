@@ -95,7 +95,7 @@ Selain itu, petani sering mengalami risiko *over-supply* dan fluktuasi harga aki
       <sub>(Perencana Tanam &amp; Proyeksi Panen)</sub>
     </td>
     <td align="center">
-      <img src="public/katalog.png" alt="Katalog Produk" width="100%" />
+      <img src="user.png" alt="Katalog Produk" width="100%" />
       <br />
       <sub>(Pencarian Komoditas &amp; Kontak WA Penjual)</sub>
     </td>
